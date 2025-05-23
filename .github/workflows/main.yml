@@ -35,4 +35,5 @@ jobs:
           ZOWE_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
           ZOWE_HOST: ${{ secrets.Z_HOST }}
         run: |
+          sed
           sshpass -p "$ZOWE_PASSWORD" ssh -o StrictHostKeyChecking=no $ZOWE_USERNAME@$ZOWE_HOST 'sh -s' < sed -e 's/ZOWE_USERNAME=/ZOWE_USERNAME=$ZOWE_USERNAME/' .github/scripts/mainframe_operations.sh
