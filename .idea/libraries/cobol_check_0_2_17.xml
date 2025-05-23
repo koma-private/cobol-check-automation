@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cobol-check-0.2.17">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/cobol-check/bin/cobol-check-0.2.17.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
