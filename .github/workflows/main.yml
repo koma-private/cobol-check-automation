@@ -23,17 +23,16 @@ jobs:
         env:
           ZOWE_OPT_USER: ${{ secrets.ZOWE_USERNAME }}
           ZOWE_OPT_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
-          Z_HOST: ${{ secrets.Z_HOST }}
-          Z_PORT: ${{ secrets.Z_PORT }}
+          ZOWE_OPT_HOST: ${{ secrets.Z_HOST }}
+          ZOWE_OPT_PORT: ${{ secrets.Z_PORT }}
+          ZOWE_OPT_REJECT_UNAUTHORIZED: false
         run: |
           chmod +x .github/scripts/zowe_operations.sh
           .github/scripts/zowe_operations.sh
       - name: Run COBOL Check on Mainframe
         env:
-          ZOWE_OPT_USER: ${{ secrets.ZOWE_USERNAME }}
-          ZOWE_OPT_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
-          Z_HOST: ${{ secrets.Z_HOST }}
-          Z_PORT: ${{ secrets.Z_PORT }}
+          ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
+          ZOWE_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
+          ZOWE_HOST: ${{ secrets.Z_HOST }}
         run: |
-          chmod +x .github/scripts/mainframe_operations.sh
-          .github/scripts/mainframe_operations.sh
+          sshpass -p "$ZOWE_PASSWORD" ssh -o StrictHostKeyChecking=no $ZOWE_USERNAME@$ZOWE_HOST 'sh -s' < sed -e 's/ZOWE_USERNAME=/ZOWE_USERNAME=$ZOWE_USERNAME/' .github/scripts/mainframe_operations.sh

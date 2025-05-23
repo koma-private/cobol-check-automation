@@ -10,6 +10,9 @@ export PATH=$PATH:/usr/lpp/zowe/cli/node/bin
 # Check Java availability
 java -version
 
+# Set ZOWE_USERNAME
+ZOWE_USERNAME=
+
 # Change to the cobolcheck directory
 cd cobolcheck
 echo "Changed to $(pwd)"
