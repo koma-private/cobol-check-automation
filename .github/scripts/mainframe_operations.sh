@@ -40,10 +40,10 @@ run_cobolcheck() {
     # Check if CC##99.CBL was created, regardless of cobolcheck exit status
     if [ -f "CC##99.CBL" ]; then
         # Copy to the MVS dataset
-        if cp CC##99.CBL "//'${ZOWE_OPT_USER}.CBL($program)'"; then
-            echo "Copied CC##99.CBL to ${ZOWE_OPT_USER}.CBL($program)"
+        if cp CC##99.CBL "//'${ZOWE_USERNAME}.CBL($program)'"; then
+            echo "Copied CC##99.CBL to ${ZOWE_USERNAME}.CBL($program)"
         else
-            echo "Failed to copy CC##99.CBL to ${ZOWE_OPT_USER}.CBL($program)"
+            echo "Failed to copy CC##99.CBL to ${ZOWE_USERNAME}.CBL($program)"
         fi
     else
         echo "CC##99.CBL not found for $program"
@@ -51,10 +51,10 @@ run_cobolcheck() {
 
     # Copy the JCL file if it exists
     if [ -f "${program}.JCL" ]; then
-        if cp ${program}.JCL "//'${ZOWE_OPT_USER}.JCL($program)'"; then
-            echo "Copied ${program}.JCL to ${ZOWE_OPT_USER}.JCL($program)"
+        if cp ${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
+            echo "Copied ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
         else
-            echo "Failed to copy ${program}.JCL to ${ZOWE_OPT_USER}.JCL($program)"
+            echo "Failed to copy ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
         fi
     else
         echo "${program}.JCL not found"
